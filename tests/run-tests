@@ -1,0 +1,19 @@
+#! /usr/bin/Rscript
+
+run_tst_cmd <- function(virtualenv) {
+  paste(
+    "Rscript --vanilla -e",
+    "'",
+    sprintf('reticulate::use_virtualenv("%s", TRUE);', virtualenv),
+    'testthat::test_dir("tests/testthat/")',
+    "'"
+  )
+}
+
+virtualenvs <- intersect(commandArgs(TRUE), c("tf1", "tf2", "no-tf"))
+
+if(length(virtualenvs))
+  devtools::install(quick = TRUE)
+
+for(venv in virtualenvs)
+  system(run_tst_cmd(venv))
