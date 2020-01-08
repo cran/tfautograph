@@ -27,7 +27,6 @@
 #' tilde <- function(x) tf_cond(x > 0, ~ x * x, ~ x)
 #' }
 tf_cond <- function(pred, true_fn, false_fn, name = NULL) {
-  env <- parent.frame()
 
   if(is_eager_tensor(pred))
     pred <- pred$`__bool__`()
@@ -99,15 +98,14 @@ tf_case <-
            exclusive = FALSE,
            name = 'case') {
 
-    env <- parent.frame()
 
-    for (i in seq_along(pred_fn_pairs)) {
-      x <- pred_fn_pairs[[i]]
+    pred_fn_pairs <- lapply(pred_fn_pairs, function(x) {
       stopifnot(inherits(x, "formula"), length(x) == 3L)
-      pred <- eval(x[[2]], env)
-      fn <- as.function(list(x[[3]]), envir = env)
-      pred_fn_pairs[[i]] <- tuple(pred, fn)
-    }
+      pred <- eval(x[[2L]], environment(x))
+      x[[2L]] <- NULL
+      fn <- as.function(x)
+      tuple(pred, fn)
+    })
 
     if (!is.null(default))
       default <- as.function(default)

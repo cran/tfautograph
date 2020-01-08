@@ -4,12 +4,12 @@
 ag_for_impl.tensorflow.python.data.ops.dataset_ops.DatasetV2 <-
   function(iterable, var, body, env) {
 
+    next_while_loop_opts$pop()
+    # while_opts not used here others, but pop anyway in case this is a for
+    # loop that can accept either a dataset or a tensor
     if(tf$executing_eagerly()) {
       next_ag_name$pop()
       next_loop_vars$pop()
-      next_while_loop_opts$pop()
-      # while_opts not used here others, but pop anyway in case this is a for
-      # loop that can accept either a dataset or a tensor
       return(ag_for_impl.python.builtin.iterator(
         as_iterator(iterable), var, body, env))
     }
@@ -24,22 +24,33 @@ ag_for_impl.tensorflow.python.data.ops.dataset_ops.DatasetV2 <-
 
     body_vars <- setdiff(body_vars, hint$exclude)
 
-    var_is_body_var <- var %in% names(body_vars)
+    var_is_body_var <- var %in% body_vars
     if(!var_is_body_var)
       hint$undef <- c(hint$undef, var)
 
     body_fn <- as_loop_body_fn(body, unique(c(body_vars, var)), env,
                                dont_check = var,
-                               additional_undefs = hint$undef)
+                               additional_undefs = hint$undef,
+                               call = sys.call(-2))
 
     body_vars <- mget(body_vars, env, inherits = TRUE)
 
+
+    args <- list(
+      iterable = iterable,
+      var = var,
+      var_is_body_var = var_is_body_var,
+      body_fn = body_fn,
+      body_vars = body_vars,
+      env = env
+    )
     can_break <- any(c("break", "return") %in% all.names(body, unique = TRUE))
 
-    final_state <- if(can_break)
-      dataset_for_loop_with_potential_break(iterable, var, body_fn, body_vars, env)
-    else
-      dataset_for_loop_no_break(iterable, var, body_fn, body_vars, env)
+    impl_fn <- if (can_break)
+      dataset_for_loop_with_potential_break else
+      dataset_for_loop_no_break
+
+    final_state <- do.call(impl_fn, args)
 
     list2env(final_state, env)
 
@@ -48,9 +59,7 @@ ag_for_impl.tensorflow.python.data.ops.dataset_ops.DatasetV2 <-
 
 
 dataset_for_loop_with_potential_break <-
-  function(iterable, var, body_fn, body_vars, env) {
-
-    var_is_body_var <- var %in% names(body_vars)
+  function(iterable, var, var_is_body_var, body_fn, body_vars, env) {
 
     did_break <- did_break_prior_elem <- FALSE
     initial_state <- tuple(body_vars, did_break, did_break_prior_elem)
@@ -99,9 +108,7 @@ dataset_for_loop_with_potential_break <-
 
 
 dataset_for_loop_no_break <-
-  function(iterable, var, body_fn, body_vars, env) {
-
-    var_is_body_var <- var %in% names(body_vars)
+  function(iterable, var, var_is_body_var, body_fn, body_vars, env) {
 
     initial_state <- body_vars
     using_placeholder  <- length(initial_state) == 0

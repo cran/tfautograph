@@ -27,13 +27,14 @@ ag_for_impl.tensorflow.tensor <- function(iterable, var, body, env) {
 
   loop_vars <- setdiff(loop_vars, hint$exclude)
 
-  var_is_loop_var <- var %in% names(loop_vars)
+  var_is_loop_var <- var %in% loop_vars
   if(!var_is_loop_var)
     hint$undef <- c(hint$undef, var)
 
   .body_fn <- as_loop_body_fn(body,  unique(c(loop_vars, var)), env,
                               dont_check = var,
-                              additional_undefs = hint$undef)
+                              additional_undefs = hint$undef,
+                              call = sys.call(-2))
 
   body_fn <- function(index, loop_vars = NULL, did_break = NULL) {
 
