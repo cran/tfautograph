@@ -1,6 +1,6 @@
-bb3514afde916939add4f8b49eabaee4 *DESCRIPTION
+e3a256c3b0134521eaed6d7c5942b614 *DESCRIPTION
 0aca8564142b878a0473b3d49e499bfd *NAMESPACE
-3e9f0179580fb132febd03eeb2e5eb45 *NEWS.md
+4170d5ce4d98a7c7eb45b4ee06695bb3 *NEWS.md
 bb3ddd3bb91c3bf887691e5da7ed2ce9 *R/aaa-Stack-Variable-Globals.R
 26e3774c64099588a28ec2492bdce42e *R/break-next.R
 d8d432c7f84423e686826b042a0644e8 *R/ctrl-deps.R
@@ -23,7 +23,7 @@ d73c1b26584b279d590a094e48206d58 *R/tf_map.R
 b4644c3c703134b92f4e3316ddae6278 *R/utils.R
 36bbf1d9cf0a51ee70cd368f101d6518 *R/view.R
 f5525db5bfd03032d534738a1fd6e270 *R/while.R
-b0adc3d59df65ca46f16177fe927aea7 *R/zzz-autograph.R
+f4a970453f9ab9350354db31f753f3c1 *R/zzz-autograph.R
 5e7c245b090b2620cc3645425a34db51 *README.md
 d1649647e4352a42a338b736b73cb564 *man/ag_if_vars.Rd
 cb9de725312b48e441b441a84a50c66b *man/ag_loop_vars.Rd

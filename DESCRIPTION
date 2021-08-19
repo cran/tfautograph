@@ -1,6 +1,6 @@
 Package: tfautograph
 Title: Autograph R for 'Tensorflow'
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: person("Tomasz", "Kalinowski", email = "kalinowskit@gmail.com", role = c("aut", "cre"))
 Description: Translate R control flow expressions into 'Tensorflow' graphs.
 SystemRequirements: TensorFlow (https://www.tensorflow.org/)
@@ -15,8 +15,8 @@ Suggests: tensorflow, rlang, testthat (>= 2.1.0), knitr, tfdatasets,
         magrittr, rmarkdown, keras
 Language: en-US
 NeedsCompilation: no
-Packaged: 2021-07-14 00:34:56 UTC; tomasz
+Packaged: 2021-08-19 16:42:00 UTC; tomasz
 Author: Tomasz Kalinowski [aut, cre]
 Maintainer: Tomasz Kalinowski <kalinowskit@gmail.com>
 Repository: CRAN
-Date/Publication: 2021-07-14 04:30:04 UTC
+Date/Publication: 2021-08-19 18:10:02 UTC
