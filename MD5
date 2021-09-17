@@ -1,6 +1,6 @@
-e3a256c3b0134521eaed6d7c5942b614 *DESCRIPTION
+bbaabcc5e521d3e9cc60c03ad71cb48e *DESCRIPTION
 0aca8564142b878a0473b3d49e499bfd *NAMESPACE
-4170d5ce4d98a7c7eb45b4ee06695bb3 *NEWS.md
+c7f27a5c2dd53336aa2ddf2f141b3c49 *NEWS.md
 bb3ddd3bb91c3bf887691e5da7ed2ce9 *R/aaa-Stack-Variable-Globals.R
 26e3774c64099588a28ec2492bdce42e *R/break-next.R
 d8d432c7f84423e686826b042a0644e8 *R/ctrl-deps.R
@@ -20,11 +20,11 @@ b5cce001cdf59414a985baa55578926e *R/print.R
 bc01c1cb956178f3a9301c35f404d3ea *R/tf_assert.R
 d73c1b26584b279d590a094e48206d58 *R/tf_map.R
 6f103db55a41614a25740071ec4dcb4a *R/undefs.R
-b4644c3c703134b92f4e3316ddae6278 *R/utils.R
-36bbf1d9cf0a51ee70cd368f101d6518 *R/view.R
+cb31f6bb8f7dad6f4aa7fcc2dd247cac *R/utils.R
+f93e66a7552f5a7a02d3c8dbd769048f *R/view.R
 f5525db5bfd03032d534738a1fd6e270 *R/while.R
-f4a970453f9ab9350354db31f753f3c1 *R/zzz-autograph.R
-5e7c245b090b2620cc3645425a34db51 *README.md
+ae683c4f267a75aad567486ad1f9def5 *R/zzz-autograph.R
+bfea1e3058d8f93ce1d6bab387feb0a0 *README.md
 d1649647e4352a42a338b736b73cb564 *man/ag_if_vars.Rd
 cb9de725312b48e441b441a84a50c66b *man/ag_loop_vars.Rd
 5c8dacf7efa87bb70936f4707429a6ef *man/ag_name.Rd
@@ -39,9 +39,9 @@ b8554c1ecfb66557a3acce5dfe2cb8b0 *man/tf_map.Rd
 596431b615bf6a451050c5c42fc8e9c9 *man/tf_switch.Rd
 0c9e3caee1becd77c5ca811172acf50f *man/view_function_graph.Rd
 6198e9bacc3471e62031d0911417a67c *tests/run-tests
-10288835bb3500101ca436a6d3e61cbe *tests/testthat.R
-5f2be4afe7a9586eb4246eaf947fb36b *tests/testthat/helper-utils.R
-da76d674bff38c95d1293e488fffb021 *tests/testthat/test-break.R
+49ad1cc6e51bcbe5e42e9880ec34e809 *tests/testthat.R
+0b2db17b0923ef626877ac34668b270e *tests/testthat/helper-utils.R
+0156a8cb679ad6423390b2fbf63a294b *tests/testthat/test-break.R
 01572beca86c95e25185b8abb3d9f496 *tests/testthat/test-export-modified.R
 0c8e8c2474ac608a28bb21c92dc029d0 *tests/testthat/test-for.R
 7cc943d3629890e9c8796555a799b6cd *tests/testthat/test-hints.R
